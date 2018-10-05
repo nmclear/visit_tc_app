@@ -1,4 +1,4 @@
-package com.cheers;
+package com.visittc;
 
 import android.app.Application;
 
