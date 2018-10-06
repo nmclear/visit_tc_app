@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -7,16 +7,23 @@ const styles = StyleSheet.create({
   iconContainerStyle: {
     flexDirection: 'column',
     backgroundColor: 'white',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '33.333333%',
+    marginBottom: 10,
   },
+  textStyle: {},
 });
 
-const IconBtn = (props) => {
+const IconLabelBtn = (props) => {
   const {
-    onPress, name, color, size,
+    onPress, name, color, size, label,
   } = props;
 
+  const { iconContainerStyle, textStyle } = styles;
   return (
-    <View style={styles.iconContainerStyle}>
+    <View style={iconContainerStyle}>
       <Icon.Button
         name={name}
         solid
@@ -26,20 +33,22 @@ const IconBtn = (props) => {
         borderRadius={0}
         onPress={onPress}
       />
+      <Text style={textStyle}>{label}</Text>
     </View>
   );
 };
 
-IconBtn.propTypes = {
+IconLabelBtn.propTypes = {
   name: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
   color: PropTypes.string,
   size: PropTypes.number,
+  label: PropTypes.string.isRequired,
 };
 
-IconBtn.defaultProps = {
+IconLabelBtn.defaultProps = {
   color: 'black',
-  size: 25,
+  size: 40,
 };
 
-export default IconBtn;
+export default IconLabelBtn;

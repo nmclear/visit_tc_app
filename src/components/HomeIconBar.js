@@ -18,10 +18,15 @@ const HomeIconBar = () => {
 
   return (
     <View style={containerStyle}>
-      <IconBtn name="restaurant" color="black" size={25} onPress={() => Actions.explore()} />
+      <IconBtn
+        name="silverware-fork-knife"
+        color="black"
+        size={25}
+        onPress={() => Actions.explore()}
+      />
       <IconBtn name="hotel" color="black" size={25} onPress={() => Actions.explore()} />
-      <IconBtn name="public" color="black" size={25} onPress={() => Actions.explore()} />
-      <IconBtn name="more-horiz" color="black" size={25} onPress={() => Actions.explore()} />
+      <IconBtn name="binoculars" color="#82CAFF" size={25} onPress={() => Actions.explore()} />
+      <IconBtn name="dots-horizontal" color="black" size={25} onPress={() => Actions.explore()} />
     </View>
   );
 };

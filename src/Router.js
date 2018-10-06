@@ -7,7 +7,7 @@ import ExploreScreen from './screens/ExploreScreen';
 
 const styles = StyleSheet.create({
   navBarStyle: {
-    backgroundColor: '#82CAFF',
+    backgroundColor: '#5E7D7E',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.2,
@@ -35,7 +35,12 @@ const RouterComponent = () => {
             onRight={() => Actions.explore()}
             title="Visit TC"
           />
-          <Scene key="explore" component={ExploreScreen} title="Explore" />
+          <Scene
+            key="explore"
+            component={ExploreScreen}
+            title="Things To Do"
+            navigationBarStyle={{ backgroundColor: '#82CAFF' }}
+          />
         </Scene>
       </Scene>
     </Router>
