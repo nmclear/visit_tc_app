@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import IconLabelBtn from '../components/IconLabelBtn';
-// import { exploreIcons } from '../iconData/exploreIcons';
 
 const styles = StyleSheet.create({
   containerStyle: {
@@ -20,7 +19,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class ExploreScreen extends Component {
+class RestaurantScreen extends Component {
   // constructor(props) {
   //   super(props);
 
@@ -37,7 +36,7 @@ class ExploreScreen extends Component {
       <View style={{ width: '33.333333%' }} key={icon.label}>
         <IconLabelBtn
           name={icon.name}
-          color="#82CAFF"
+          color="#5E7D7E"
           size={40}
           onPress={icon.onPress}
           label={icon.label}
@@ -62,11 +61,11 @@ const mapStateToProps = ({ home }) => {
   };
 };
 
-ExploreScreen.propTypes = {
+RestaurantScreen.propTypes = {
   icons: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(
   mapStateToProps,
   {},
-)(ExploreScreen);
+)(RestaurantScreen);

@@ -10,10 +10,13 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '33.333333%',
     marginBottom: 10,
   },
-  textStyle: {},
+  textStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    // flexDirection: 'row',
+  },
 });
 
 const IconLabelBtn = (props) => {
@@ -25,6 +28,7 @@ const IconLabelBtn = (props) => {
   return (
     <View style={iconContainerStyle}>
       <Icon.Button
+        style={{ flexDirection: 'row' }}
         name={name}
         solid
         color={color}
@@ -40,7 +44,7 @@ const IconLabelBtn = (props) => {
 
 IconLabelBtn.propTypes = {
   name: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
+  onPress: PropTypes.func,
   color: PropTypes.string,
   size: PropTypes.number,
   label: PropTypes.string.isRequired,

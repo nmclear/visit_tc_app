@@ -59,5 +59,3 @@ export const exploreIcons = [
     label: 'Dog Friendly',
   },
 ];
-
-export const more = [];

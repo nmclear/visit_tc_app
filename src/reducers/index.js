@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
-// import AuthReducer from './AuthReducer';
-// import EmployeeFormReducer from './EmployeeFormReducer';
-// import EmployeeReducer from './EmployeeReducer';
+import HomeReducer from './HomeReducer';
+import GreetingReducer from './GreetingReducer';
+import SearchReducer from './SearchReducer';
 
 export default combineReducers({
-  // auth: AuthReducer,
-  // employeeForm: EmployeeFormReducer,
-  // employees: EmployeeReducer,
+  home: HomeReducer,
+  greeting: GreetingReducer,
 });

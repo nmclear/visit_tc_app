@@ -1,47 +1,44 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const styles = StyleSheet.create({
   iconContainerStyle: {
     flexDirection: 'column',
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'transparent',
   },
 });
 
 const IconBtn = (props) => {
-  const {
-    onPress, name, color, size,
-  } = props;
+  const { color, size, bgColor } = props;
 
   return (
     <View style={styles.iconContainerStyle}>
       <Icon.Button
-        name={name}
+        name="arrow-left"
         solid
         color={color}
         size={size}
-        backgroundColor="white"
+        backgroundColor={bgColor}
         borderRadius={0}
-        onPress={onPress}
+        onPress={() => Actions.pop()}
       />
     </View>
   );
 };
 
 IconBtn.propTypes = {
-  name: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
   color: PropTypes.string,
+  bgColor: PropTypes.string,
   size: PropTypes.number,
 };
 
 IconBtn.defaultProps = {
-  color: 'black',
+  color: 'white',
   size: 25,
+  bgColor: 'transparent',
 };
 
 export default IconBtn;

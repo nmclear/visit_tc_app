@@ -18,6 +18,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const Card = props => <View style={styles.containerStyle}>{props.children}</View>;
+const Card = props => <View style={[styles.containerStyle, props.style]}>{props.children}</View>;
 
 export { Card };
