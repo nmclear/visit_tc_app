@@ -3,10 +3,8 @@ import { View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { timeOfDaySetUp } from '../actions';
-
 import HomeIconBar from '../components/HomeIconBar';
 import MapIconBar from '../components/MapIconBar';
-// import GreetingModal from '../components/GreetingModal';
 import GreetingCard from '../components/GreetingCard';
 
 const styles = StyleSheet.create({
@@ -22,7 +20,6 @@ class HomeScreen extends Component {
     super(props);
 
     this.state = { greetingDisplay: 'flex', mapBarDisplay: 'none' };
-
     this.renderIcons = this.props.timeOfDaySetUp();
   }
 

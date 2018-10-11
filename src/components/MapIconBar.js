@@ -44,13 +44,10 @@ class MapIconBar extends Component {
   }
 }
 
-// export default MapIconBar;
-
 const mapStateToProps = ({ home }) => {
-  const { selected, icons, loading } = home;
+  const { icons, loading } = home;
 
   return {
-    selected,
     icons,
     loading,
   };

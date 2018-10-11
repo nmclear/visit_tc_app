@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 import {
   exploreSelected, restaurantSelected, hotelSelected, moreSelected,
 } from '../actions';
@@ -18,65 +17,31 @@ const styles = StyleSheet.create({
   },
 });
 
-class HomeIconBar extends Component {
-  onButtonPress = (select) => {
-    const {
-      exploreSelected, restaurantSelected, hotelSelected, moreSelected,
-    } = this.props;
-    if (select === 'explore') {
-      exploreSelected('explore');
-    } else if (select === 'restaurant') {
-      restaurantSelected('restaurant');
-    } else if (select === 'hotel') {
-      hotelSelected('hotel');
-    } else if (select === 'more') {
-      moreSelected('more');
-    }
-  };
-
-  render() {
-    const { containerStyle } = styles;
-    return (
-      <View style={containerStyle}>
-        <IconBtn
-          name="silverware-fork-knife"
-          color="#616D7E"
-          size={25}
-          onPress={this.onButtonPress.bind(this, 'restaurant')}
-        />
-        <IconBtn
-          name="hotel"
-          color="#616D7E"
-          size={25}
-          onPress={this.onButtonPress.bind(this, 'hotel')}
-        />
-        <IconBtn
-          name="binoculars"
-          color="#616D7E"
-          size={25}
-          onPress={this.onButtonPress.bind(this, 'explore')}
-        />
-        <IconBtn
-          name="dots-horizontal"
-          color="#616D7E"
-          size={25}
-          onPress={this.onButtonPress.bind(this, 'more')}
-        />
-      </View>
-    );
-  }
-}
-
-// export default HomeIconBar;
-
-const mapStateToProps = ({ home }) => {
-  const { selected, icons, loading } = home;
-
-  return {
-    selected,
-    icons,
-    loading,
-  };
+const HomeIconBar = (props) => {
+  const { containerStyle } = styles;
+  return (
+    <View style={containerStyle}>
+      <IconBtn
+        name="silverware-fork-knife"
+        color="#616D7E"
+        size={25}
+        onPress={() => props.restaurantSelected()}
+      />
+      <IconBtn name="hotel" color="#616D7E" size={25} onPress={() => props.hotelSelected()} />
+      <IconBtn
+        name="binoculars"
+        color="#616D7E"
+        size={25}
+        onPress={() => props.exploreSelected()}
+      />
+      <IconBtn
+        name="dots-horizontal"
+        color="#616D7E"
+        size={25}
+        onPress={() => props.moreSelected()}
+      />
+    </View>
+  );
 };
 
 HomeIconBar.propTypes = {
@@ -87,7 +52,7 @@ HomeIconBar.propTypes = {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   {
     exploreSelected,
     restaurantSelected,

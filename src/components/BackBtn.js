@@ -21,7 +21,8 @@ const IconBtn = (props) => {
         solid
         color={color}
         size={size}
-        backgroundColor={bgColor}
+        // backgroundColor={bgColor}
+        backgroundColor="transparent"
         borderRadius={0}
         onPress={() => Actions.pop()}
       />

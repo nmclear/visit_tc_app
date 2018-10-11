@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-// import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -19,24 +18,14 @@ const styles = StyleSheet.create({
   },
 });
 
-class MoreScreen extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     // pageIcons: exploreIcons,
-  //   };
-  // }
-
+class IconScreen extends Component {
   renderIcons = () => {
-    // const { pageIcons } = this.state;
-
-    const { icons } = this.props;
+    const { icons, color } = this.props;
     return icons.map(icon => (
       <View style={{ width: '33.333333%' }} key={icon.label}>
         <IconLabelBtn
           name={icon.name}
-          color="#FDD017"
+          color={color}
           size={40}
           onPress={icon.onPress}
           label={icon.label}
@@ -52,20 +41,19 @@ class MoreScreen extends Component {
 }
 
 const mapStateToProps = ({ home }) => {
-  const { selected, icons, loading } = home;
-
+  const { icons, color } = home;
   return {
-    selected,
     icons,
-    loading,
+    color,
   };
 };
 
-MoreScreen.propTypes = {
+IconScreen.propTypes = {
   icons: PropTypes.arrayOf(PropTypes.object).isRequired,
+  color: PropTypes.string.isRequired,
 };
 
 export default connect(
   mapStateToProps,
   {},
-)(MoreScreen);
+)(IconScreen);

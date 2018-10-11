@@ -1,13 +1,12 @@
 import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import { StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import BackBtn from './components/BackBtn';
 import HomeScreen from './screens/HomeScreen';
-import ExploreScreen from './screens/ExploreScreen';
-import RestaurantScreen from './screens/RestaurantScreen';
-import HotelScreen from './screens/HotelScreen';
-import MoreScreen from './screens/MoreScreen';
+import IconScreen from './screens/IconScreen';
 
 const styles = StyleSheet.create({
   navBarStyle: {
@@ -25,8 +24,10 @@ const styles = StyleSheet.create({
 
 const SearchIcon = <Icon name="magnify" color="white" size={25} />;
 
-const RouterComponent = () => {
+const RouterComponent = (props) => {
   const { navBarStyle, titleStyle } = styles;
+  const { color, headerTitle } = props;
+
   return (
     <Router navigationBarStyle={navBarStyle} titleStyle={titleStyle} navBarButtonColor="white">
       <Scene key="root" hideNavBar>
@@ -36,36 +37,16 @@ const RouterComponent = () => {
             key="home"
             component={HomeScreen}
             rightTitle={SearchIcon}
-            onRight={() => Actions.explore()}
+            onRight={() => Actions.icon()}
             title="Visit TC"
           />
+
           <Scene
-            key="explore"
-            component={ExploreScreen}
-            title="Things To Do"
-            navigationBarStyle={{ backgroundColor: '#82CAFF' }}
-            renderBackButton={() => <BackBtn color="white" size={25} bgColor="#82CAFF" />}
-          />
-          <Scene
-            key="restaurant"
-            component={RestaurantScreen}
-            title="Restaurants"
-            navigationBarStyle={{ backgroundColor: '#5E7D7E' }}
-            renderBackButton={() => <BackBtn color="white" size={25} bgColor="#5E7D7E" />}
-          />
-          <Scene
-            key="hotel"
-            component={HotelScreen}
-            title="Hotels"
-            navigationBarStyle={{ backgroundColor: '#FF8040' }}
-            renderBackButton={() => <BackBtn color="white" size={25} bgColor="#FF8040" />}
-          />
-          <Scene
-            key="more"
-            component={MoreScreen}
-            title="More"
-            navigationBarStyle={{ backgroundColor: '#FDD017' }}
-            renderBackButton={() => <BackBtn color="white" size={25} bgColor="#FDD017" />}
+            key="icon"
+            component={IconScreen}
+            title={headerTitle}
+            navigationBarStyle={{ backgroundColor: color }}
+            renderBackButton={() => <BackBtn color="white" size={25} bgColor={color} />}
           />
         </Scene>
       </Scene>
@@ -73,4 +54,21 @@ const RouterComponent = () => {
   );
 };
 
-export default RouterComponent;
+const mapStateToProps = ({ home }) => {
+  const { color, headerTitle } = home;
+
+  return {
+    color,
+    headerTitle,
+  };
+};
+
+RouterComponent.propTypes = {
+  color: PropTypes.string.isRequired,
+  headerTitle: PropTypes.string.isRequired,
+};
+
+export default connect(
+  mapStateToProps,
+  {},
+)(RouterComponent);
